@@ -1,4 +1,5 @@
 use
-ng serve button-demo
+ng build filled-buttons //to build local library
 
-to run demo
+use
+ng serve button-demo // to run demo
