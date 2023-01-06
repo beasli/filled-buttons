@@ -1,0 +1,13 @@
+<button
+  class="button"
+  [ngClass]="{
+    'button--large': size == 'large',
+    'button--default': size == 'default',
+    'button--small': size == 'small',
+    'button--disabled': isDisabled,
+    'button--focused': isFocused,
+    'button--pressed': isPressed
+  }"
+>
+  {{ label }}
+</button>

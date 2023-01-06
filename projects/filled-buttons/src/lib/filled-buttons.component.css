@@ -1,0 +1,48 @@
+.button {
+  background: #3f4fa0;
+  border-radius: 100px;
+  color: #fff;
+}
+
+.button--pressed {
+  background: #2d3872 !important;
+}
+
+.button--disabled {
+  background: #e4e4e4 !important;
+  border-color: #e4e4e4 !important;
+  color: rgb(184, 176, 176) !important;
+}
+
+.button--focused {
+  border: 4px dashed #1a2143;
+}
+
+.button:hover {
+  background: #394892;
+}
+
+.button--disabled:hover {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button--default {
+  width: 125px;
+  height: 48px;
+  font-size: 12px;
+  padding: 8px 24px;
+}
+
+.button--large {
+  width: 180px;
+  height: 60px;
+  font-size: 18px;
+  padding: 8px 24px;
+}
+
+.button--small {
+  width: 100px;
+  height: 36px;
+  font-size: 10px;
+}

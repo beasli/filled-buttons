@@ -3,5 +3,135 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "filled-buttons": {
+      "projectType": "library",
+      "root": "projects/filled-buttons",
+      "sourceRoot": "projects/filled-buttons/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/filled-buttons/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/filled-buttons/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/filled-buttons/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/filled-buttons/src/test.ts",
+            "tsConfig": "projects/filled-buttons/tsconfig.spec.json",
+            "karmaConfig": "projects/filled-buttons/karma.conf.js"
+          }
+        }
+      }
+    },
+    "button-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/button-demo",
+      "sourceRoot": "projects/button-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/button-demo",
+            "index": "projects/button-demo/src/index.html",
+            "main": "projects/button-demo/src/main.ts",
+            "polyfills": "projects/button-demo/src/polyfills.ts",
+            "tsConfig": "projects/button-demo/tsconfig.app.json",
+            "assets": [
+              "projects/button-demo/src/favicon.ico",
+              "projects/button-demo/src/assets"
+            ],
+            "styles": [
+              "projects/button-demo/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/button-demo/src/environments/environment.ts",
+                  "with": "projects/button-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "button-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "button-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "button-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/button-demo/src/test.ts",
+            "polyfills": "projects/button-demo/src/polyfills.ts",
+            "tsConfig": "projects/button-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/button-demo/karma.conf.js",
+            "assets": [
+              "projects/button-demo/src/favicon.ico",
+              "projects/button-demo/src/assets"
+            ],
+            "styles": [
+              "projects/button-demo/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "filled-buttons"
 }

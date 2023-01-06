@@ -1,0 +1,47 @@
+<table>
+  <tr style="text-align: center">
+    <td><p>Type</p></td>
+    <td><label>Default Button</label></td>
+    <td><label>Small Button</label></td>
+    <td><label>Large Button</label></td>
+    <td><label>Disable Button</label></td>
+  </tr>
+  <tr>
+    <td><p>Using Component</p></td>
+    <td><shubham-button [label]="title"></shubham-button></td>
+    <td><shubham-button [label]="title" [size]="'small'"></shubham-button></td>
+    <td><shubham-button [label]="title" [size]="'large'"></shubham-button></td>
+    <td>
+      <shubham-button
+        [label]="title"
+        [isDisabled]="isButtonDisabled"
+      ></shubham-button>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Using Directive</p></td>
+    <td>
+      <button class="button" appFilledButtons>{{ title }}</button>
+    </td>
+    <td>
+      <button class="button" appFilledButtons size="small">
+        {{ title }}
+      </button>
+    </td>
+    <td>
+      <button class="button" appFilledButtons size="large">
+        {{ title }}
+      </button>
+    </td>
+    <td>
+      <button
+        class="button"
+        appFilledButtons
+        isDisabled="isButtonDisabled"
+        size="'large'"
+      >
+        {{ title }}
+      </button>
+    </td>
+  </tr>
+</table>
