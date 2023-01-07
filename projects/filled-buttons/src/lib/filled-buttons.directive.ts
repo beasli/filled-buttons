@@ -12,12 +12,27 @@ import {
 export class FilledButtonsDirective implements OnInit {
   @Input() isDisabled: any;
   @Input() size: string = 'default';
-  defaultColor: string = '#3f4fa0';
+  @Input() defaultColor: string = 'primary';
+  @Input() textColor: string = '#fff';
+
+  backgroundColors = {
+    primary: {
+      default: '#3F4FA0',
+      hover: '#394892',
+      pressed: '#2D3872',
+    },
+    secondry: {
+      default: '#ECEDF6',
+      hover: '#D9DCEC',
+      pressed: '#C5CAE3',
+    },
+  };
 
   basicButton = {
-    background: this.defaultColor,
+    background: this.getBackgroundColor('default'),
     borderRadius: '100px',
-    color: '#fff',
+    color: this.textColor,
+    border: this.getBackgroundColor('default'),
   };
 
   buttonDefault = {
@@ -41,9 +56,7 @@ export class FilledButtonsDirective implements OnInit {
     padding: '2px',
   };
 
-  buttonPressed = {
-    background: '#2d3872 ',
-  };
+  buttonPressed: any;
 
   buttonFocused = {
     border: '4px dashed #1a2143',
@@ -55,9 +68,7 @@ export class FilledButtonsDirective implements OnInit {
     color: 'rgb(184, 176, 176) ',
   };
 
-  buttonHover = {
-    background: '#394892',
-  };
+  buttonHover: any;
 
   buttonDisabledHover = {
     cursor: 'not-allowed',
@@ -66,6 +77,18 @@ export class FilledButtonsDirective implements OnInit {
   @HostBinding('style') style: {} | undefined;
 
   ngOnInit(): void {
+    this.basicButton.background = this.getBackgroundColor('default');
+    this.basicButton.color = this.textColor;
+    this.basicButton.border = this.getBackgroundColor('default');
+
+    this.buttonHover = {
+      background: this.getBackgroundColor('hover'),
+    };
+
+    this.buttonPressed = {
+      background: this.getBackgroundColor('pressed'),
+    };
+
     this.style = {
       ...this.basicButton,
       ...this.setSize(),
@@ -125,5 +148,26 @@ export class FilledButtonsDirective implements OnInit {
     }
 
     return size;
+  }
+
+  getBackgroundColor(option: string) {
+    let output = '';
+    if (option == 'default') {
+      output =
+        this.defaultColor == 'primary'
+          ? this.backgroundColors.primary.default
+          : this.backgroundColors.secondry.default;
+    } else if (option == 'hover') {
+      output =
+        this.defaultColor == 'primary'
+          ? this.backgroundColors.primary.hover
+          : this.backgroundColors.secondry.hover;
+    } else if (option == 'pressed') {
+      output =
+        this.defaultColor == 'primary'
+          ? this.backgroundColors.primary.pressed
+          : this.backgroundColors.secondry.pressed;
+    }
+    return output;
   }
 }

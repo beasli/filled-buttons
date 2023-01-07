@@ -21,7 +21,9 @@
   <tr>
     <td><p>Using Directive</p></td>
     <td>
-      <button class="button" appFilledButtons>{{ title }}</button>
+      <button class="button" appFilledButtons>
+        {{ title }}
+      </button>
     </td>
     <td>
       <button class="button" appFilledButtons size="small">
@@ -39,6 +41,52 @@
         appFilledButtons
         isDisabled="isButtonDisabled"
         size="'large'"
+      >
+        {{ title }}
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Using Directive</p></td>
+    <td>
+      <button
+        class="button"
+        appFilledButtons
+        defaultColor="secondry"
+        textColor="#3F4FA0"
+      >
+        {{ title }}
+      </button>
+    </td>
+    <td>
+      <button
+        class="button"
+        appFilledButtons
+        size="small"
+        defaultColor="secondry"
+        textColor="#3F4FA0"
+      >
+        {{ title }}
+      </button>
+    </td>
+    <td>
+      <button
+        class="button"
+        appFilledButtons
+        size="large"
+        defaultColor="secondry"
+        textColor="#3F4FA0"
+      >
+        {{ title }}
+      </button>
+    </td>
+    <td>
+      <button
+        class="button"
+        appFilledButtons
+        isDisabled="isButtonDisabled"
+        size="'large'"
+        textColor="#3F4FA0"
       >
         {{ title }}
       </button>
